@@ -14,10 +14,6 @@ namespace Kursach_ind_4kurs
 {
     public  class Bank_indv_zdContext : DbContext
     {
-        public Bank_indv_zdContext()
-        {
-        }
-
         public Bank_indv_zdContext(DbContextOptions<Bank_indv_zdContext> options)
             : base(options)
         {
