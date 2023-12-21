@@ -47,6 +47,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.salary_empl = new System.Windows.Forms.TextBox();
             this.Age_empl = new System.Windows.Forms.TextBox();
+            this.IdEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FioEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AgeEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddressEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TelephoneEmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PassportEmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PostEmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salaryempl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +76,6 @@
             this.label5.Size = new System.Drawing.Size(113, 13);
             this.label5.TabIndex = 30;
             this.label5.Text = "Паспорт Содрудника";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -112,7 +119,6 @@
             this.Pass_Empl.Name = "Pass_Empl";
             this.Pass_Empl.Size = new System.Drawing.Size(100, 20);
             this.Pass_Empl.TabIndex = 25;
-            this.Pass_Empl.TextChanged += new System.EventHandler(this.Pass_client_TextChanged);
             // 
             // Phone_empl
             // 
@@ -170,10 +176,20 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-4, -6);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdEmployee,
+            this.FioEmployee,
+            this.AgeEmployee,
+            this.AddressEmployee,
+            this.TelephoneEmpl,
+            this.PassportEmpl,
+            this.PostEmpl,
+            this.salaryempl});
+            this.dataGridView1.Location = new System.Drawing.Point(-4, -1);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(832, 459);
+            this.dataGridView1.Size = new System.Drawing.Size(778, 454);
             this.dataGridView1.TabIndex = 17;
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
@@ -216,6 +232,63 @@
             this.Age_empl.Size = new System.Drawing.Size(100, 20);
             this.Age_empl.TabIndex = 36;
             // 
+            // IdEmployee
+            // 
+            this.IdEmployee.DataPropertyName = "IdEmployee";
+            this.IdEmployee.HeaderText = "Номер сотрудника";
+            this.IdEmployee.Name = "IdEmployee";
+            this.IdEmployee.ReadOnly = true;
+            this.IdEmployee.Visible = false;
+            // 
+            // FioEmployee
+            // 
+            this.FioEmployee.DataPropertyName = "FioEmployee";
+            this.FioEmployee.HeaderText = "Фио сотрудника";
+            this.FioEmployee.Name = "FioEmployee";
+            this.FioEmployee.ReadOnly = true;
+            // 
+            // AgeEmployee
+            // 
+            this.AgeEmployee.DataPropertyName = "AgeEmployee";
+            this.AgeEmployee.HeaderText = "Возраст сотрудника";
+            this.AgeEmployee.Name = "AgeEmployee";
+            this.AgeEmployee.ReadOnly = true;
+            // 
+            // AddressEmployee
+            // 
+            this.AddressEmployee.DataPropertyName = "AddressEmployee";
+            this.AddressEmployee.HeaderText = "Адресс сотрудника";
+            this.AddressEmployee.Name = "AddressEmployee";
+            this.AddressEmployee.ReadOnly = true;
+            // 
+            // TelephoneEmpl
+            // 
+            this.TelephoneEmpl.DataPropertyName = "TelephoneEmployee";
+            this.TelephoneEmpl.HeaderText = "Телефон сотрудника";
+            this.TelephoneEmpl.Name = "TelephoneEmpl";
+            this.TelephoneEmpl.ReadOnly = true;
+            // 
+            // PassportEmpl
+            // 
+            this.PassportEmpl.DataPropertyName = "PassportEmployee";
+            this.PassportEmpl.HeaderText = "Паспорт сотрудника";
+            this.PassportEmpl.Name = "PassportEmpl";
+            this.PassportEmpl.ReadOnly = true;
+            // 
+            // PostEmpl
+            // 
+            this.PostEmpl.DataPropertyName = "PostEmployee";
+            this.PostEmpl.HeaderText = "Должность";
+            this.PostEmpl.Name = "PostEmpl";
+            this.PostEmpl.ReadOnly = true;
+            // 
+            // salaryempl
+            // 
+            this.salaryempl.DataPropertyName = "SalaryEmploee";
+            this.salaryempl.HeaderText = "Зарплата сотрудника";
+            this.salaryempl.Name = "salaryempl";
+            this.salaryempl.ReadOnly = true;
+            // 
             // EmployeeF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,8 +314,7 @@
             this.Controls.Add(this.AdBtn);
             this.Controls.Add(this.dataGridView1);
             this.Name = "EmployeeF";
-            this.Text = "EmployeeF";
-            this.Load += new System.EventHandler(this.EmployeeF_Load);
+            this.Text = "Сотрудники";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -270,5 +342,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox salary_empl;
         private System.Windows.Forms.TextBox Age_empl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdEmployee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FioEmployee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AgeEmployee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AddressEmployee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TelephoneEmpl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PassportEmpl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PostEmpl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salaryempl;
     }
 }

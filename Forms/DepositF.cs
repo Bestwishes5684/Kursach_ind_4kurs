@@ -1,4 +1,6 @@
 ﻿using Kursach_ind_4kurs.BD;
+using Kursach_ind_4kurs.Models;
+using Kursach_ind_4kurs.ModelsResponce;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,16 +18,30 @@ namespace Kursach_ind_4kurs.Forms
         public DepositF()
         {
             InitializeComponent();
+            Initdatagrid();
 
+        }
 
+        private void Initdatagrid()
+        {
             using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
 
 
-                dataGridView1.DataSource = dbContext.Deposits.ToList();
+                dataGridView1.DataSource = dbContext.Deposits.Select(x => new DepositsResponce
+                {
+                    DepositId = x.DepositId,
+                    DepositName = x.DepositName,
+                    DepositTerm = x.DepositTerm,
+                    DepositPrecent = x.DepositPrecent,
+                    DealId = x.DealId,
+                    CodeDepositType = x.CodeDepositType,
+                    SumDeposits = x.SumDeposits,
+
+
+                }).ToList();
 
             }
-
         }
 
         private void AdBtn_Click(object sender, EventArgs e)
@@ -33,7 +49,7 @@ namespace Kursach_ind_4kurs.Forms
             using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
 
-                Deposits deposits = new Deposits 
+                Deposits deposits = new Deposits
                 {
                     DepositName = Name_depos.Text,
                     DepositTerm = Convert.ToInt32( Term_depos.Text),
@@ -44,19 +60,14 @@ namespace Kursach_ind_4kurs.Forms
                 
                 };
 
-                dataGridView1.DataSource = db.Deposits.Add(deposits);
+                db.Deposits.Add(deposits);
                 db.SaveChanges();
+                Initdatagrid();
 
             }
 
 
-            using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
-            {
-
-
-                dataGridView1.DataSource = dbContext.Client.ToList();
-
-            }
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -79,6 +90,61 @@ namespace Kursach_ind_4kurs.Forms
             Id_deal.Text = dr.Cells[4].Value.ToString();
             Type_deposit.Text = dr.Cells[5].Value.ToString();
             Sum_deposit.Text = dr.Cells[6].Value.ToString();
+
+        }
+
+        private void DeleteBTN_Click(object sender, EventArgs e)
+        {
+            using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
+            {
+                var id = (DepositsResponce)dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].DataBoundItem;
+                var editclient = db.Deposits.FirstOrDefault(x => x.DepositId == id.DepositId);
+
+
+
+                editclient.DepositName = Name_depos.Text;
+                editclient.DepositTerm = Convert.ToInt32(Term_depos.Text);
+                editclient.DepositPrecent = Convert.ToInt32(Precent_depos.Text); 
+                editclient.DealId = Convert.ToInt32(Id_deal.Text); 
+                editclient.CodeDepositType = Type_deposit.Text;
+                editclient.SumDeposits = Convert.ToInt32(Sum_deposit.Text);
+
+              
+                db.Deposits.Remove(editclient);
+                db.SaveChanges();
+
+                Initdatagrid();
+
+
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
+            {
+                var id = (DepositsResponce)dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].DataBoundItem;
+                var editclient = db.Deposits.FirstOrDefault(x => x.DepositId == id.DepositId);
+
+
+
+                editclient.DepositName = Name_depos.Text;
+                editclient.DepositTerm = Convert.ToInt32(Term_depos.Text);
+                editclient.DepositPrecent = Convert.ToInt32(Precent_depos.Text);
+                editclient.DealId = Convert.ToInt32(Id_deal.Text);
+                editclient.CodeDepositType = Type_deposit.Text;
+                editclient.SumDeposits = Convert.ToDecimal(Sum_deposit.Text);
+
+
+                db.Deposits.Update(editclient);
+                db.SaveChanges();
+
+                Initdatagrid();
+
+
+
+            }
 
         }
     }

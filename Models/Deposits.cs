@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace Kursach_ind_4kurs
+namespace Kursach_ind_4kurs.Models
 {
     public partial class Deposits
     {
@@ -17,7 +17,6 @@ namespace Kursach_ind_4kurs
         public string CodeDepositType { get; set; }
         public decimal? SumDeposits { get; set; }
 
-        public virtual DepositType CodeDepositTypeNavigation { get; set; }
-        public virtual Deal Deal { get; set; }
+     
     }
 }

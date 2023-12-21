@@ -1,4 +1,5 @@
 ﻿using Kursach_ind_4kurs.BD;
+using Kursach_ind_4kurs.ModelsResponce;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,13 +17,27 @@ namespace Kursach_ind_4kurs.Forms
         public DepositTypeF()
         {
             InitializeComponent();
+            Initdatagrid();
+        }
 
-
+        private void Initdatagrid()
+        {
             using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
 
 
-                dataGridView1.DataSource = dbContext.DepositType.ToList();
+
+                dataGridView1.DataSource = dbContext.DepositType.Select(x => new DepositTypeResponce
+                {
+                    DepositType1 = x.DepositType1,
+                    NameDeposit = x.NameDeposit,
+                    DescriptionDeposit = x.DescriptionDeposit,
+                    MinTermDeposit = x.MinTermDeposit,
+                    MinSumDeposit = x.MinSumDeposit,
+                    PercentDeposit = x.PercentDeposit
+
+
+                }).ToList();
 
             }
         }
@@ -32,7 +47,7 @@ namespace Kursach_ind_4kurs.Forms
             using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
 
-                DepositType deposit = new DepositType 
+                DepositType deposit = new DepositType
                 { 
                     DepositType1=num_depositT.Text,
                     NameDeposit = Name_depositT.Text,
@@ -44,25 +59,19 @@ namespace Kursach_ind_4kurs.Forms
 
                 dataGridView1.DataSource = db.DepositType.Add(deposit);
                 db.SaveChanges();
-
+                Initdatagrid();
             }
 
 
-            using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
-            {
-
-
-                dataGridView1.DataSource = dbContext.DepositType.ToList();
-
-            }
+       
         }
 
         private void DeleteBTN_Click(object sender, EventArgs e)
         {
             using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
-                var id = (dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString());
-                var editclient = db.DepositType.FirstOrDefault(x => x.DepositType1 == id);
+                var id = (DepositTypeResponce)dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].DataBoundItem;
+                var editclient = db.DepositType.FirstOrDefault(x => x.DepositType1 == id.DepositType1);
 
 
 
@@ -70,27 +79,21 @@ namespace Kursach_ind_4kurs.Forms
                 dataGridView1.DataSource = db.DepositType.Remove(editclient);
                 db.SaveChanges();
 
-
+                Initdatagrid();
 
 
             }
 
 
-            using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
-            {
-
-
-                dataGridView1.DataSource = dbContext.DepositType.ToList();
-
-            }
+         
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
-                var id = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
-                var editclient = db.DepositType.FirstOrDefault(x => x.DepositType1 == id);
+                var id = (DepositTypeResponce)dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].DataBoundItem;
+                var editclient = db.DepositType.FirstOrDefault(x => x.DepositType1 == id.DepositType1);
 
 
                 editclient.DepositType1 = num_depositT.Text;
@@ -105,19 +108,11 @@ namespace Kursach_ind_4kurs.Forms
 
 
 
+                Initdatagrid();
             }
 
 
-            using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
-            {
-
-
-                dataGridView1.DataSource = dbContext.DepositType.ToList();
-
-            }
-
-        
-
+         
     }
 
     private void dataGridView1_MouseClick(object sender, MouseEventArgs e)

@@ -83,43 +83,6 @@ namespace Kursach_ind_4kurs.Migrations
                     b.ToTable("DepositType");
                 });
 
-            modelBuilder.Entity("Kursach_ind_4kurs.Deposits", b =>
-                {
-                    b.Property<int>("DepositId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CodeDepositType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CodeDepositTypeNavigationDepositType1")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("DealId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DepositName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("DepositPrecent")
-                        .HasColumnType("float");
-
-                    b.Property<int>("DepositTerm")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("SumDeposits")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("DepositId");
-
-                    b.HasIndex("CodeDepositTypeNavigationDepositType1");
-
-                    b.HasIndex("DealId");
-
-                    b.ToTable("Deposits");
-                });
-
             modelBuilder.Entity("Kursach_ind_4kurs.Employee", b =>
                 {
                     b.Property<int>("IdEmployee")
@@ -227,6 +190,38 @@ namespace Kursach_ind_4kurs.Migrations
                     b.ToTable("Client");
                 });
 
+            modelBuilder.Entity("Kursach_ind_4kurs.Models.Deposits", b =>
+                {
+                    b.Property<int>("DepositId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CodeDepositType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DealId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DepositName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("DepositPrecent")
+                        .HasColumnType("float");
+
+                    b.Property<int>("DepositTerm")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("SumDeposits")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("DepositId");
+
+                    b.HasIndex("DealId");
+
+                    b.ToTable("Deposits");
+                });
+
             modelBuilder.Entity("Kursach_ind_4kurs.Deal", b =>
                 {
                     b.HasOne("Kursach_ind_4kurs.Models.Client", "Client")
@@ -242,24 +237,20 @@ namespace Kursach_ind_4kurs.Migrations
                         .HasForeignKey("ValutaId");
                 });
 
-            modelBuilder.Entity("Kursach_ind_4kurs.Deposits", b =>
-                {
-                    b.HasOne("Kursach_ind_4kurs.DepositType", "CodeDepositTypeNavigation")
-                        .WithMany("Deposits")
-                        .HasForeignKey("CodeDepositTypeNavigationDepositType1");
-
-                    b.HasOne("Kursach_ind_4kurs.Deal", "Deal")
-                        .WithMany("Deposits")
-                        .HasForeignKey("DealId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Kursach_ind_4kurs.Loans", b =>
                 {
                     b.HasOne("Kursach_ind_4kurs.Deal", "IdDealNavigation")
                         .WithMany("Loans")
                         .HasForeignKey("IdDealNavigationIdDeal");
+                });
+
+            modelBuilder.Entity("Kursach_ind_4kurs.Models.Deposits", b =>
+                {
+                    b.HasOne("Kursach_ind_4kurs.Deal", null)
+                        .WithMany("Deposits")
+                        .HasForeignKey("DealId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

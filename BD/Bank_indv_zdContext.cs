@@ -47,6 +47,15 @@ namespace Kursach_ind_4kurs
             modelBuilder.Entity<Loans>().HasKey(x => x.IdLoan);
 
 
+            modelBuilder.Entity<Client>(x => 
+            {
+                //x.HasKey(y => y.IdClient);
+                //x.HasMany(y => y.Deal).WithOne(y => y.Client).HasForeignKey(y => y.ClientId);
+                
+
+
+            });
+
         }
 
 
