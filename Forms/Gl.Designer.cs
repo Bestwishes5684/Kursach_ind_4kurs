@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.DealButton = new System.Windows.Forms.Button();
             this.Kursbutton = new System.Windows.Forms.Button();
             this.ClientButton = new System.Windows.Forms.Button();
@@ -36,11 +35,8 @@
             this.depositsButton = new System.Windows.Forms.Button();
             this.deposit_typeButton = new System.Windows.Forms.Button();
             this.EmployeeButton = new System.Windows.Forms.Button();
-            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.button8 = new System.Windows.Forms.Button();
             this.Exit = new System.Windows.Forms.Button();
-            this.dealBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dealBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // DealButton
@@ -113,14 +109,6 @@
             this.EmployeeButton.UseVisualStyleBackColor = true;
             this.EmployeeButton.Click += new System.EventHandler(this.EmployeeButton_Click);
             // 
-            // entityCommand1
-            // 
-            this.entityCommand1.CommandTimeout = 0;
-            this.entityCommand1.CommandTree = null;
-            this.entityCommand1.Connection = null;
-            this.entityCommand1.EnablePlanCaching = true;
-            this.entityCommand1.Transaction = null;
-            // 
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(261, 284);
@@ -140,10 +128,6 @@
             this.Exit.UseVisualStyleBackColor = true;
             this.Exit.Click += new System.EventHandler(this.Exit_Click_1);
             // 
-            // dealBindingSource
-            // 
-            this.dealBindingSource.DataMember = "deal";
-            // 
             // Gl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,14 +144,11 @@
             this.Controls.Add(this.DealButton);
             this.Name = "Gl";
             this.Text = "Главная страница ";
-            ((System.ComponentModel.ISupportInitialize)(this.dealBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-  
-        private System.Windows.Forms.BindingSource dealBindingSource;
         private System.Windows.Forms.Button DealButton;
         private System.Windows.Forms.Button Kursbutton;
         private System.Windows.Forms.Button ClientButton;
@@ -175,7 +156,6 @@
         private System.Windows.Forms.Button depositsButton;
         private System.Windows.Forms.Button deposit_typeButton;
         private System.Windows.Forms.Button EmployeeButton;
-        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button Exit;
     }

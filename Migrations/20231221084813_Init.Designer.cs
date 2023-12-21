@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kursach_ind_4kurs.Migrations
 {
     [DbContext(typeof(Bank_indv_zdContext))]
-    [Migration("20231221035619_name")]
-    partial class name
+    [Migration("20231221084813_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
