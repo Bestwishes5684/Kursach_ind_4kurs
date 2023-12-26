@@ -35,9 +35,12 @@
             this.Name_valuta = new System.Windows.Forms.TextBox();
             this.DeleteBTN = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.AdBnt = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.idvaluta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valutaname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // Cleare_btn
@@ -102,18 +105,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, -2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(342, 449);
-            this.dataGridView1.TabIndex = 17;
-            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
-            // 
             // AdBnt
             // 
             this.AdBnt.Location = new System.Drawing.Point(364, 6);
@@ -124,11 +115,51 @@
             this.AdBnt.UseVisualStyleBackColor = true;
             this.AdBnt.Click += new System.EventHandler(this.AdBnt_Click);
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idvaluta,
+            this.valutaname,
+            this.dataGridViewTextBoxColumn1});
+            this.dataGridView2.Location = new System.Drawing.Point(3, 6);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(355, 449);
+            this.dataGridView2.TabIndex = 30;
+            this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
+            // 
+            // idvaluta
+            // 
+            this.idvaluta.DataPropertyName = "IdValuta";
+            this.idvaluta.HeaderText = "номер валюты";
+            this.idvaluta.Name = "idvaluta";
+            this.idvaluta.ReadOnly = true;
+            this.idvaluta.Visible = false;
+            // 
+            // valutaname
+            // 
+            this.valutaname.DataPropertyName = "ValutaName";
+            this.valutaname.HeaderText = "Название валюты";
+            this.valutaname.Name = "valutaname";
+            this.valutaname.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Kurs1";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Курс";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
             // KursF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 450);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.AdBnt);
             this.Controls.Add(this.Cleare_btn);
             this.Controls.Add(this.label3);
@@ -137,10 +168,9 @@
             this.Controls.Add(this.Name_valuta);
             this.Controls.Add(this.DeleteBTN);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.dataGridView1);
             this.Name = "KursF";
             this.Text = "KursF";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,7 +185,10 @@
         private System.Windows.Forms.TextBox Name_valuta;
         private System.Windows.Forms.Button DeleteBTN;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button AdBnt;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idvaluta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valutaname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

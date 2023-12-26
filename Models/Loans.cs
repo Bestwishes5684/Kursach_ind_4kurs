@@ -15,6 +15,7 @@ namespace Kursach_ind_4kurs
         public int IdDeal { get; set; }
         public int IdValuta { get; set; }
 
+
         public virtual Deal IdDealNavigation { get; set; }
     }
 }

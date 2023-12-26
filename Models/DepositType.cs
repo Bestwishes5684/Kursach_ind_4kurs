@@ -9,18 +9,16 @@ namespace Kursach_ind_4kurs
 {
     public partial class DepositType
     {
-        public DepositType()
-        {
-            Deposits = new HashSet<Deposits>();
-        }
-
         public string DepositType1 { get; set; }
         public string NameDeposit { get; set; }
         public string DescriptionDeposit { get; set; }
         public int MinTermDeposit { get; set; }
         public decimal MinSumDeposit { get; set; }
         public double PercentDeposit { get; set; }
-
-        public virtual ICollection<Deposits> Deposits { get; set; }
     }
+
+
+
+
+
 }

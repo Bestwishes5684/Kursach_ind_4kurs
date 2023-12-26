@@ -1,4 +1,5 @@
 ﻿using Kursach_ind_4kurs.BD;
+using Kursach_ind_4kurs.ModelsResponce;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,44 +9,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Kursach_ind_4kurs.Forms
 {
     public partial class EmployeeF : Form
     {
-        public EmployeeF()  
+        public EmployeeF()
         {
             InitializeComponent();
 
+            Initdatagrid();
 
+        }
 
+        private void Initdatagrid()
+        {
             using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
 
 
-                dataGridView1.DataSource = dbContext.Employee.ToList();
+                dataGridView1.DataSource = dbContext.Employee.Select(x => new EmployeeResponce
+                {
+                    IdEmployee  = x.IdEmployee,
+                    FioEmployee = x.FioEmployee,
+                    AgeEmployee = x.AgeEmployee,
+                    AddressEmployee  = x.AddressEmployee,
+                    TelephoneEmployee  = x.TelephoneEmployee,
+                    PassportEmployee = x.PassportEmployee,
+                    PostEmployee = x.PostEmployee,
+                    SalaryEmploee = x.SalaryEmploee,
+
+                }).ToList();
 
             }
-
-
         }
 
-        private void Pass_client_TextChanged(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EmployeeF_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AdBtn_Click(object sender, EventArgs e)
+        private void AdBtn_Click(object sender, EventArgs e)    
         {
             using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
@@ -64,15 +66,10 @@ namespace Kursach_ind_4kurs.Forms
 
                 };
 
-                dataGridView1.DataSource = db.Employee.Add(employee);
+                 db.Employee.Add(employee);
                 db.SaveChanges();
-                using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
-                {
+                Initdatagrid();
 
-
-                    dataGridView1.DataSource = dbContext.Employee.ToList();
-
-                }
             }
         }
 
@@ -80,23 +77,25 @@ namespace Kursach_ind_4kurs.Forms
         {
             using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
-                var id = int.Parse(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString());
-                var employee = db.Employee.FirstOrDefault(x => x.IdEmployee == id);
+                var id = (EmployeeResponce)dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].DataBoundItem;
+                var editclient = db.Employee.FirstOrDefault(x => x.IdEmployee == id.IdEmployee);
 
 
 
+               editclient.FioEmployee = Fio_Employe.Text;
+                editclient.AgeEmployee = Convert.ToInt32(Age_empl.Text);
+                editclient.AddressEmployee = adress_empl.Text;
+                editclient.TelephoneEmployee = Phone_empl.Text;
+                editclient.PassportEmployee = Pass_Empl.Text;
+                editclient.PostEmployee = Post_empl.Text;
 
-                dataGridView1.DataSource = db.Employee.Remove(employee);
+                editclient.SalaryEmploee = Convert.ToDecimal(salary_empl.Text);
+                db.Employee.Remove(editclient);
                 db.SaveChanges();
-                using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
-                {
 
-
-                    dataGridView1.DataSource = dbContext.Employee.ToList();
-
-                }
-
-
+                Initdatagrid();
+                                             
+                                 
 
             }
         }
@@ -131,8 +130,9 @@ namespace Kursach_ind_4kurs.Forms
         {
             using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
-                var id = int.Parse(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString());
-                var editclient = db.Employee.FirstOrDefault(x => x.IdEmployee == id);
+                var id = (EmployeeResponce)dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].DataBoundItem;
+                var editclient = db.Employee.FirstOrDefault(x => x.IdEmployee == id.IdEmployee);
+
 
 
                 editclient.FioEmployee = Fio_Employe.Text;
@@ -141,19 +141,12 @@ namespace Kursach_ind_4kurs.Forms
                 editclient.TelephoneEmployee = Phone_empl.Text;
                 editclient.PassportEmployee = Pass_Empl.Text;
                 editclient.PostEmployee = Post_empl.Text;
-                editclient.SalaryEmploee = Convert.ToDecimal(salary_empl.Text);
 
-
-
-                dataGridView1.DataSource = db.Employee.Update(editclient);
+                editclient.SalaryEmploee = Convert.ToInt32(salary_empl.Text);
+                db.Employee.Update(editclient);
                 db.SaveChanges();
-                using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
-                {
 
-
-                    dataGridView1.DataSource = dbContext.Employee.ToList();
-
-                }
+                Initdatagrid();
 
 
             }

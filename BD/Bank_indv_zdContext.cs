@@ -14,10 +14,6 @@ namespace Kursach_ind_4kurs
 {
     public  class Bank_indv_zdContext : DbContext
     {
-        public Bank_indv_zdContext()
-        {
-        }
-
         public Bank_indv_zdContext(DbContextOptions<Bank_indv_zdContext> options)
             : base(options)
         {
@@ -46,6 +42,15 @@ namespace Kursach_ind_4kurs
             modelBuilder.Entity<Kurs>().HasKey(x => x.IdValuta);
             modelBuilder.Entity<Loans>().HasKey(x => x.IdLoan);
 
+
+            modelBuilder.Entity<Client>(x => 
+            {
+                //x.HasKey(y => y.IdClient);
+                //x.HasMany(y => y.Deal).WithOne(y => y.Client).HasForeignKey(y => y.ClientId);
+                
+
+
+            });
 
         }
 

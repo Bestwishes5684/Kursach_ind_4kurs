@@ -1,4 +1,5 @@
 ﻿using Kursach_ind_4kurs.BD;
+using Kursach_ind_4kurs.ModelsResponce;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,13 +17,23 @@ namespace Kursach_ind_4kurs.Forms
         public KursF()
         {
             InitializeComponent();
+            Initdatagrid(); 
+        }
 
-
+        private void Initdatagrid()
+        {
             using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
 
 
-                dataGridView1.DataSource = dbContext.Kurs.ToList();
+                dataGridView2.DataSource = dbContext.Kurs.Select(x => new KursResponce
+                {
+                    IdValuta = x.IdValuta,
+                    ValutaName = x.ValutaName,
+                    Kurs1 = x.Kurs1,
+                  
+
+                }).ToList();
 
             }
         }
@@ -40,19 +51,14 @@ namespace Kursach_ind_4kurs.Forms
 
                  };
 
-                dataGridView1.DataSource = db.Kurs.Add(client);
+                dataGridView2.DataSource = db.Kurs.Add(client);
                 db.SaveChanges();
+                Initdatagrid();
 
             }
 
 
-            using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
-            {
-
-
-                dataGridView1.DataSource = dbContext.Kurs.ToList();
-
-            }
+          
 
 
 
@@ -63,56 +69,51 @@ namespace Kursach_ind_4kurs.Forms
         {
             using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
-                var id = int.Parse(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[2].Value.ToString());
-                var editclient = db.Kurs.FirstOrDefault(x => x.IdValuta == id);
+                var id = (KursResponce)dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].DataBoundItem;
+                var editclient = db.Kurs.FirstOrDefault(x => x.IdValuta == id.IdValuta);
 
 
 
+                editclient.ValutaName = Name_valuta.Text;
+                editclient.Kurs1 = Convert.ToInt32(Kurs.Text);
+              
+                
 
-                dataGridView1.DataSource = db.Kurs.Remove(editclient);
+              
+                db.Kurs.Remove(editclient);
                 db.SaveChanges();
 
+                Initdatagrid();
 
 
 
-            }
-
-
-            using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
-            {
-
-
-                dataGridView1.DataSource = dbContext.Kurs.ToList();
 
             }
+
+
+         
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             using (Bank_indv_zdContext db = new Bank_indv_zdContext(DataBaseHelper.Option()))
             {
-                var id = int.Parse(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[2].Value.ToString());
+                var id = int.Parse(dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[2].Value.ToString());
                 var editclient = db.Kurs.FirstOrDefault(x => x.IdValuta == id);
 
 
                 editclient.ValutaName = Name_valuta.Text;
                 editclient.Kurs1 = Convert.ToInt32(Kurs.Text);
             
-                dataGridView1.DataSource = db.Kurs.Update(editclient);
+                dataGridView2.DataSource = db.Kurs.Update(editclient);
                 db.SaveChanges();
 
-
-
-            }
-
-
-            using (var dbContext = new Bank_indv_zdContext(DataBaseHelper.Option()))
-            {
-
-
-                dataGridView1.DataSource = dbContext.Kurs.ToList();
+                Initdatagrid();
 
             }
+
+
+        
         }
 
         private void Cleare_btn_Click(object sender, EventArgs e)
@@ -122,11 +123,11 @@ namespace Kursach_ind_4kurs.Forms
           
         }
 
-        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
         {
-            DataGridViewRow dr = dataGridView1.SelectedRows[0];
+            DataGridViewRow dr = dataGridView2.SelectedRows[0];
             Kurs.Text = dr.Cells[1].Value.ToString();
-            Name_valuta.Text = dr.Cells[2].Value.ToString();
+            Name_valuta.Text = dr.Cells[0].Value.ToString();
         }
     }
 }

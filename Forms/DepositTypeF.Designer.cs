@@ -45,19 +45,25 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.num_depositT = new System.Windows.Forms.TextBox();
+            this.deposittype = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamedepostT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mintermDep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinSumDeposit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PercentDeposit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // Desk_depositT
             // 
-            this.Desk_depositT.Location = new System.Drawing.Point(1001, 96);
+            this.Desk_depositT.Location = new System.Drawing.Point(902, 85);
             this.Desk_depositT.Name = "Desk_depositT";
             this.Desk_depositT.Size = new System.Drawing.Size(100, 20);
             this.Desk_depositT.TabIndex = 55;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(841, 254);
+            this.button1.Location = new System.Drawing.Point(742, 243);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 48);
             this.button1.TabIndex = 50;
@@ -68,7 +74,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(838, 209);
+            this.label5.Location = new System.Drawing.Point(739, 198);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 13);
             this.label5.TabIndex = 49;
@@ -77,7 +83,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(828, 169);
+            this.label4.Location = new System.Drawing.Point(729, 158);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(167, 13);
             this.label4.TabIndex = 48;
@@ -86,7 +92,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(828, 134);
+            this.label3.Location = new System.Drawing.Point(729, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(157, 13);
             this.label3.TabIndex = 47;
@@ -95,7 +101,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(838, 99);
+            this.label2.Location = new System.Drawing.Point(739, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 13);
             this.label2.TabIndex = 46;
@@ -104,7 +110,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(838, 64);
+            this.label1.Location = new System.Drawing.Point(739, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 13);
             this.label1.TabIndex = 45;
@@ -112,35 +118,35 @@
             // 
             // Prec_depositT
             // 
-            this.Prec_depositT.Location = new System.Drawing.Point(1001, 206);
+            this.Prec_depositT.Location = new System.Drawing.Point(902, 195);
             this.Prec_depositT.Name = "Prec_depositT";
             this.Prec_depositT.Size = new System.Drawing.Size(100, 20);
             this.Prec_depositT.TabIndex = 44;
             // 
             // Min_Sum_DepositT
             // 
-            this.Min_Sum_DepositT.Location = new System.Drawing.Point(1001, 169);
+            this.Min_Sum_DepositT.Location = new System.Drawing.Point(902, 158);
             this.Min_Sum_DepositT.Name = "Min_Sum_DepositT";
             this.Min_Sum_DepositT.Size = new System.Drawing.Size(100, 20);
             this.Min_Sum_DepositT.TabIndex = 43;
             // 
             // Min_term_depositT
             // 
-            this.Min_term_depositT.Location = new System.Drawing.Point(1001, 131);
+            this.Min_term_depositT.Location = new System.Drawing.Point(902, 120);
             this.Min_term_depositT.Name = "Min_term_depositT";
             this.Min_term_depositT.Size = new System.Drawing.Size(100, 20);
             this.Min_term_depositT.TabIndex = 42;
             // 
             // Name_depositT
             // 
-            this.Name_depositT.Location = new System.Drawing.Point(1001, 61);
+            this.Name_depositT.Location = new System.Drawing.Point(902, 50);
             this.Name_depositT.Name = "Name_depositT";
             this.Name_depositT.Size = new System.Drawing.Size(100, 20);
             this.Name_depositT.TabIndex = 41;
             // 
             // DeleteBTN
             // 
-            this.DeleteBTN.Location = new System.Drawing.Point(651, 78);
+            this.DeleteBTN.Location = new System.Drawing.Point(552, 67);
             this.DeleteBTN.Name = "DeleteBTN";
             this.DeleteBTN.Size = new System.Drawing.Size(82, 48);
             this.DeleteBTN.TabIndex = 40;
@@ -150,7 +156,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(651, 132);
+            this.button2.Location = new System.Drawing.Point(552, 121);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 48);
             this.button2.TabIndex = 39;
@@ -160,7 +166,7 @@
             // 
             // AdBtn
             // 
-            this.AdBtn.Location = new System.Drawing.Point(651, 14);
+            this.AdBtn.Location = new System.Drawing.Point(552, 3);
             this.AdBtn.Name = "AdBtn";
             this.AdBtn.Size = new System.Drawing.Size(82, 48);
             this.AdBtn.TabIndex = 38;
@@ -173,17 +179,25 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.deposittype,
+            this.NamedepostT,
+            this.Description,
+            this.mintermDep,
+            this.MinSumDeposit,
+            this.PercentDeposit});
             this.dataGridView1.Location = new System.Drawing.Point(0, -3);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(645, 459);
+            this.dataGridView1.Size = new System.Drawing.Size(546, 459);
             this.dataGridView1.TabIndex = 37;
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(838, 32);
+            this.label8.Location = new System.Drawing.Point(739, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 13);
             this.label8.TabIndex = 57;
@@ -191,16 +205,59 @@
             // 
             // num_depositT
             // 
-            this.num_depositT.Location = new System.Drawing.Point(1001, 29);
+            this.num_depositT.Location = new System.Drawing.Point(902, 18);
             this.num_depositT.Name = "num_depositT";
             this.num_depositT.Size = new System.Drawing.Size(100, 20);
             this.num_depositT.TabIndex = 56;
+            // 
+            // deposittype
+            // 
+            this.deposittype.DataPropertyName = "DepositType1";
+            this.deposittype.HeaderText = "Номер депозита";
+            this.deposittype.Name = "deposittype";
+            this.deposittype.ReadOnly = true;
+            this.deposittype.Visible = false;
+            // 
+            // NamedepostT
+            // 
+            this.NamedepostT.DataPropertyName = "NameDeposit";
+            this.NamedepostT.HeaderText = "Навзание депозита";
+            this.NamedepostT.Name = "NamedepostT";
+            this.NamedepostT.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "DescriptionDeposit";
+            this.Description.HeaderText = "Описание депозита";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // mintermDep
+            // 
+            this.mintermDep.DataPropertyName = "MinTermDeposit";
+            this.mintermDep.HeaderText = "Мин время депозита(в мес)";
+            this.mintermDep.Name = "mintermDep";
+            this.mintermDep.ReadOnly = true;
+            // 
+            // MinSumDeposit
+            // 
+            this.MinSumDeposit.DataPropertyName = "MinSumDeposit";
+            this.MinSumDeposit.HeaderText = "Мин сумма депозита";
+            this.MinSumDeposit.Name = "MinSumDeposit";
+            this.MinSumDeposit.ReadOnly = true;
+            // 
+            // PercentDeposit
+            // 
+            this.PercentDeposit.DataPropertyName = "PercentDeposit";
+            this.PercentDeposit.HeaderText = "Процент депозита";
+            this.PercentDeposit.Name = "PercentDeposit";
+            this.PercentDeposit.ReadOnly = true;
             // 
             // DepositTypeF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1133, 450);
+            this.ClientSize = new System.Drawing.Size(1028, 450);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.num_depositT);
             this.Controls.Add(this.Desk_depositT);
@@ -245,5 +302,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox num_depositT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deposittype;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NamedepostT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mintermDep;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MinSumDeposit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PercentDeposit;
     }
 }
